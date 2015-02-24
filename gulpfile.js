@@ -37,6 +37,11 @@ gulp.task('browser-sync', function() {
     });
 });
 
+gulp.task('deploy', ['jekyll-build'], function () {
+    return gulp.src('./dist/**/*')
+        .pipe(deploy());
+});
+
 gulp.task('js', function() {
   gulp.src('js/**/*.js')
     .pipe(uglify())
