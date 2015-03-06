@@ -13,6 +13,7 @@ var gulp        = require('gulp'),
     minifyHTML  = require('gulp-minify-html'),
     size        = require('gulp-size'),
     imagemin    = require('gulp-imagemin'),
+    deploy      = require('gulp-gh-pages'),
     pngquant    = require('imagemin-pngquant');
 
 gulp.task('scss', function() {
@@ -37,8 +38,8 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('deploy', ['jekyll-build'], function () {
-    return gulp.src('./dist/**/*')
+gulp.task('deploy', function () {
+    return gulp.src('dist/**/*')
         .pipe(deploy());
 });
 
