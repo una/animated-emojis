@@ -61,6 +61,28 @@ li {
   display: block;
 }
 
+%mouth--teeth {
+  @extend %face;
+  height: 9px;
+  width: 18px;
+  border-radius: 0 0 18px 18px;
+  background-color: $white;
+  display: block;
+}
+
+%mouth--pucker {
+  @extend %face;
+  height: 5px;
+  width: 5px;
+  border-radius: 18px 9px 0 18px;
+  border-left: 1.5px solid $black;
+  border-top: 1.5px solid $black;
+  background-color: $yellow;
+  display: block;
+  content: "";
+}
+
+
 %eye--upturned {
   @extend %face;
   background-color: $yellow;
@@ -178,7 +200,7 @@ li {
     }
 }
 
-@keyframes eye-blink {
+@keyframes eyes-face-3 {
   0% {
     height: $eye-size;
     transform: translateX(0);
@@ -221,8 +243,143 @@ li {
   }
 }
 
+
+
 .face-3 {
   // animation: face-2 4s ease-in-out infinite;
+  .eyes {
+    margin: 18px 6px;
+    &:before {
+     @extend %eye--open;
+     animation: eyes-face-3 4s ease-in-out infinite;
+    }
+    &:after {
+     @extend %eye--open;
+     animation: eyes-face-3 4s ease-in-out infinite;
+     margin-left: 22px;
+    }
+  }
+  .mouth {
+    // animation: face-2--mouth 2s ease-in-out infinite;
+    @extend %mouth--smile;
+    margin: 8px 11px;
+    display: block;
+  }
+}
+
+
+
+@keyframes heart-beat {
+  0% {
+    transform: scale(1);
+    animation-timing-function: cubic-bezier(0.5, -0.5, 1, 1);
+    }
+    20% {
+    transform: scale(1.5);
+  }
+    100% {
+    transform: scale(1);
+  }
+}
+
+
+
+.face-4 {
+  
+.eyes {
+    margin: 18px 6px;
+
+    @extend %heart;
+    animation: heart-beat 1s infinite;
+}
+  .mouth {
+    @extend %mouth--teeth;
+    margin: -18px 11px;
+    display: block;
+  }
+}
+
+// Heart Shape CSS
+%heart {
+    position: relative;
+    width: 10px;
+    height: 9px;
+}
+%heart:before,
+%heart:after {
+    position: absolute;
+    content: "";
+    left: 5px;
+    top: 0;
+    width: 5px;
+    height: 8px;
+    background: pink;
+    border-radius: 5px 5px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+%heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin :100% 100%;
+}
+
+
+@keyframes eye-blink {
+  0% {
+    height: $eye-size;
+    transform: translateX(0);
+  }
+  20% {
+    height: $eye-size;
+  }
+  22% {
+    height: 0px;
+  }
+  24% {
+    height: $eye-size;
+  }
+  45% {
+    height: $eye-size;
+  }
+  47% {
+    height: 0px;
+  }
+  49% {
+    height: $eye-size;
+
+  }
+  60% {
+    height: $eye-size;
+  }
+  62% {
+    height: 0px;
+  }
+  65% {
+    height: $eye-size;
+  }
+}
+
+
+@keyframes kiss-lips {
+  0% {
+    transform: translateX(0);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translateX(-3px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateX(0);
+    animation-timing-function: ease-in;
+  }
+}
+
+
+
+.face-5 {
+
   .eyes {
     margin: 18px 6px;
     &:before {
@@ -235,10 +392,20 @@ li {
      margin-left: 22px;
     }
   }
-  .mouth {
-    // animation: face-2--mouth 2s ease-in-out infinite;
-    @extend %mouth--smile;
-    margin: 8px 11px;
-    display: block;
+
+.mouth {
+    padding: 7px 18px;
+
+    &:before {
+     @extend %mouth--pucker;
+    }
+    &:after {
+      @extend %mouth--pucker;
+      height: 5px;
+      width: 3px;
+      margin-top: 5px;
+    }
+    animation: kiss-lips 1s infinite;
   }
 }
+

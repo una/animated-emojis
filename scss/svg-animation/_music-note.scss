@@ -1,0 +1,75 @@
+//Delay Sass variables needs to be Animation delay 1 always needs to be .2seconds ahead of animation delay 2
+$animation-delay-1: 1.3s;
+$animation-delay-2: 1.5s;
+
+//Master SVG element
+.music-note {
+  animation: music-note 2s;
+  transform: scale(.5);
+}
+
+//SVG animation elements
+#Oval-1 {
+  animation: Oval-1 .5s cubic-bezier(.5,-.5,.5,1);
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  animation-fill-mode: both;
+  animation-delay: $animation-delay-2;
+}
+//Vertical Stems
+#Path-1,
+#Path-2 {
+animation: Path-1 .5s;
+animation-fill-mode: both;
+transform: scale(1);
+transform-origin: -10% 100%;
+animation-delay: $animation-delay-2;
+}
+//Horizontal Stem
+#Path-3 {
+animation: Path-3 .5s;
+animation-fill-mode: both;
+animation-delay: $animation-delay-1;
+}
+
+//Keyframes for Animations
+@keyframes music-note {
+  0% {
+  transform: scale(0) rotate(50deg);
+  }
+  100% {
+  transform: scale(1) rotate(0deg);
+  }
+}
+
+
+
+@keyframes Oval-1 {
+  0% {
+  transform: scale(1);
+  }
+  100% {
+  transform: scale(0);
+  }
+}
+
+@keyframes Path-1 {
+  0% {
+ transform: scale(1);
+    stroke-width: 5;
+  }
+  100% {
+ transform: scale(0);
+    stroke-width: 0;
+  }
+}
+
+
+@keyframes Path-3 {
+  0% {
+    stroke-width: 5;
+  }
+  100% {
+    stroke-width: 0;
+  }
+}
