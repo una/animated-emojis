@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><title>Title Here</title><link rel=stylesheet href=css/main.css></head><style>
+
+#heart--div {
+    position:relative;
+    width:500px;
+    height:450px;
+    margin:0 auto;
+    transform: scale(.5);
+}
+.heart {
+    position:absolute;
+    z-index:2;
+    background: #B80734;;
+    transform: scale(1) rotate(225deg);
+}
+
+%heart-circle {
+    top:50px;
+    width:220px;
+    height:220px;
+    border-radius: 220px;
+}
+
+.heart-circle--left {
+    @extend %heart-circle;
+    left:62px;
+}
+
+.heart-circle--right {
+    @extend %heart-circle;
+    right:62px;
+}
+.heart--center {
+    width:210px;
+    height:210px;
+    bottom:100px;
+    left:145px;
+}
+
+</style><body><div id=background></div><div id=heart--div><div class="heart heart-circle--left"></div><div class="heart heart--center"></div><div class="heart heart-circle--right"></div></div></body></html>
